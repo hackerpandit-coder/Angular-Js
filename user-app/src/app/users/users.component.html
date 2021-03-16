@@ -2,23 +2,10 @@
     <li class="list-group-item">
     <div class="row">
     <div class="col-4">
-        <div class="text-center">
-            <img [src]="user.image" class="rounded-circle img-fluid">
-            <br><br>
-            <!-- <button class="btn btn-info btn-block"
-                (click)="onbtnClick(user)">More Info</button> -->
-        </div>
+        <app-user-image (userEvent) ="onMoreInfo($event)" [user]="user"></app-user-image>
     </div>
     <div class="col-8">
-        <h3> {{ user.firstName }} {{ user.lastName }}</h3>
-        <p> Date of Birth : <span [innerText]="user.dob"></span> </p>
-        <p> Income : <span [innerText]="user.income"></span> </p>
-        <p> Total Votes : <span [innerText]="user.votes"></span>
-    <br>
-    <input type="number" [value]="user.votes" (change)="user.votes = $event.target.value">
-
-    <!-- <input type="number" [(ngModel)]="user.votes"> -->
-        </p>
+        <app-user-info [user]="user"></app-user-info>
     </div>
     </div>
     </li>

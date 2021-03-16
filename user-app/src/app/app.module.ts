@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
+import { UserImageComponent } from './users/user-image/user-image.component';
+import { UserInfoComponent } from './users/user-info/user-info.component';
 
 @NgModule({
   declarations: [                 // Componant | Directives | Pipes
-    AppComponent, UsersComponent
+    AppComponent, UsersComponent, UserImageComponent, UserInfoComponent
   ],
   imports: [                      // Module - Build-in or Custom module
     BrowserModule
