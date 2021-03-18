@@ -18,6 +18,10 @@ export class UserInfoComponent implements OnInit {
     this.myDynamicClass['features']=!this.myDynamicClass['features'];
   }
 
+  onTheEvent(color : string){
+     console.log("Directive Color - ", color);
+  }
+
   constructor() { }
 
   ngOnInit(): void {
