@@ -14,6 +14,8 @@ export class PipeDemoComponent implements OnInit {
     },3000)
   })
 
+  contact_number : number = 9867180727;
+
   constructor() { }
 
   ngOnInit(): void {
