@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -19,7 +20,7 @@ import { DataService } from './services/data.service';
     AppComponent, UsersComponent, UserImageComponent, UserInfoComponent, HighlightDirective, PipeDemoComponent, CountryCodePipe, FilterPipe, LoginComponent, RegisterComponent
   ],
   imports: [                      // Module - Build-in or Custom module
-    BrowserModule, FormsModule, ReactiveFormsModule
+    BrowserModule, FormsModule, ReactiveFormsModule,HttpClientModule
   ],
   providers: [DataService],                  // Service - Register the service with providers
   bootstrap: [AppComponent]       // Root Componant
