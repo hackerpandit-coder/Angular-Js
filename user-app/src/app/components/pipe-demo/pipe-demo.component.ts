@@ -14,6 +14,22 @@ export class PipeDemoComponent implements OnInit {
     },3000)
   })
 
+  contact_number : number = 9867180727;
+
+  todoList = [
+    {label : "buy the pulses", status : "done"},
+    {label : "buy the jeans", status : "pending"},
+    {label : "pot the plants", status : "done"},
+    {label : "renew car insurance", status : "pending"}
+  ]
+
+  filteredStatus : string = '';
+  
+  onAddItem(){
+    this.todoList.push({label : "New Item", status : "pending"});
+    // this.todoList = []
+  }
+
   constructor() { }
 
   ngOnInit(): void {
