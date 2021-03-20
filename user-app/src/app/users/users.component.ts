@@ -3,11 +3,13 @@ import { Component, OnInit, Input,
     AfterViewChecked, OnDestroy,SimpleChanges } from '@angular/core';
 import { User } from '../model/user';
 import { USER_DATA } from '../data/mocks';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  //providers:[DataService]
 })
 export class UsersComponent implements OnInit
 // OnChanges,DoCheck,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,OnDestroy 
@@ -18,14 +20,20 @@ export class UsersComponent implements OnInit
   users : User[];
 
   ngOnInit(): void {
-    this.users = USER_DATA;
+   // this.users = USER_DATA;
+   //this.users = this.dataService.getUsers();
+   this.dataService.getUserFronJson().subscribe(response => this.users = <User[]> response['userdata'])
+  }
+
+  onDecrement(){
+    this.dataService.counter--;
   }
 
   onMoreInfo(user : User){
     alert(`Mr. ${user.lastName} is working with ${user.company}!!`);
   }
 
-  constructor() { }
+  constructor(public dataService : DataService) { }
 
   
 
