@@ -1,5 +1,7 @@
 <!-- <h3>Title from parent : {{ title }}</h3> -->
 
+<h4>Counter in user : {{ dataService.counter }}</h4>
+<button class="btn btn-light" (click)="onDecrement()">Decrement Counter</button>
 <ul class="list-group">
     <li class="list-group-item" *ngFor="let user of users; index as i; first as isFirst; last as isLast; even as isEven; odd as isOdd">
          Index: {{ i }} || Even : {{ isEven }} || First : {{ isFirst }} || Odd : {{ isOdd }} || Last : {{ isLast }} 

@@ -8,7 +8,8 @@ import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  //providers:[DataService]
 })
 export class UsersComponent implements OnInit
 // OnChanges,DoCheck,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,OnDestroy 
@@ -22,6 +23,10 @@ export class UsersComponent implements OnInit
    // this.users = USER_DATA;
    //this.users = this.dataService.getUsers();
    this.dataService.getUserFronJson().subscribe(response => this.users = <User[]> response['userdata'])
+  }
+
+  onDecrement(){
+    this.dataService.counter--;
   }
 
   onMoreInfo(user : User){
