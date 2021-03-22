@@ -4,6 +4,7 @@ import { Component, OnInit, Input,
 import { User } from '../model/user';
 import { USER_DATA } from '../data/mocks';
 import { DataService } from '../services/data.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-users',
@@ -22,7 +23,18 @@ export class UsersComponent implements OnInit
   ngOnInit(): void {
    // this.users = USER_DATA;
    //this.users = this.dataService.getUsers();
-   this.dataService.getUserFronJson().subscribe(response => this.users = <User[]> response['userdata'])
+   //this.dataService.getUserFronJson().subscribe(response => this.users = <User[]> response['userdata'])
+   this.dataService.getUsersFromApi()
+      .subscribe(
+        (data : User[]) => {
+          this.users = data;
+        },
+        err => console.log(err),
+        () => {console.log("[COMPLETED]")}
+      )
+
+      //this.dataService.createUser();
+
   }
 
   onDecrement(){
