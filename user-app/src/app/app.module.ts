@@ -14,6 +14,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DataService } from './services/data.service';
+import { AuthService } from './services/auth.service';
 import { ObservableDemoComponent } from './components/observable-demo/observable-demo.component';
 
 @NgModule({
@@ -23,7 +24,7 @@ import { ObservableDemoComponent } from './components/observable-demo/observable
   imports: [                      // Module - Build-in or Custom module
     BrowserModule, FormsModule, ReactiveFormsModule,HttpClientModule
   ],
-  providers: [DataService],                  // Service - Register the service with providers
+  providers: [DataService,AuthService],                  // Service - Register the service with providers
   bootstrap: [AppComponent]       // Root Componant
 })
 export class AppModule { }

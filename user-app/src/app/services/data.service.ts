@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { USER_DATA } from '../data/mocks';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class DataService {
@@ -10,9 +11,10 @@ export class DataService {
 
   private BASE_URL : string = "https://angular-js-6c651-default-rtdb.firebaseio.com/userdata.json";
 
+  constructor(public httpClient : HttpClient, private authService : AuthService){}
 
   getUsersFromApi(){
-    return this.httpClient.get<User[]>(this.BASE_URL);
+    return this.httpClient.get<User[]>(`${this.BASE_URL}?auth=${this.authService.getToken()}`);
     
   }
 
@@ -28,7 +30,7 @@ export class DataService {
     return USER_DATA;
   }
 
-  constructor(public httpClient : HttpClient){}
+  
 
   getUserFronJson(){
    return this.httpClient.get('./assets/data/user-data.json');

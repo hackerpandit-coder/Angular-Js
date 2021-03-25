@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './services/data.service';
+import { AuthService } from './services/auth.service';
 import *  as firebase from 'firebase';
 
 @Component({
@@ -12,9 +13,8 @@ export class AppComponent implements OnInit{
   title = 'user-app';
   showUsers : boolean = true;
 
-  constructor(private dataService : DataService){
-
-  }
+  constructor(private dataService : DataService,
+     public authService : AuthService){}
 
   onIncrement(){
     this.dataService.counter++;
