@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from './services/data.service';
+import { AuthService } from './services/auth.service';
+import *  as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +9,20 @@ import { DataService } from './services/data.service';
   styleUrls: ['./app.component.css'],
   //providers:[DataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'user-app';
   showUsers : boolean = true;
 
-  constructor(private dataService : DataService){
-
-  }
+  constructor(private dataService : DataService,
+     public authService : AuthService){}
 
   onIncrement(){
     this.dataService.counter++;
+  }
+  ngOnInit(){
+    firebase.default.initializeApp({
+      apiKey: "AIzaSyC6Y3eivH6Rceq_LtrMamSwDcrwuLyOtSY",
+      authDomain: "angular-js-6c651.firebaseapp.com"
+    })
   }
 }

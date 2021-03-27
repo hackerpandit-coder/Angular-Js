@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, from } from 'rxjs';
+import { map, tap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-observable-demo',
@@ -7,6 +8,10 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./observable-demo.component.css']
 })
 export class ObservableDemoComponent{
+
+  number = [1,2,3,4,5];
+  numberObs$ = from(this.number);
+
 
   obs$ = new Observable((observer) => {
     setTimeout(() => {
@@ -29,8 +34,17 @@ export class ObservableDemoComponent{
 
   packages : Array<string> = [];
   unsub$ : Subscription;
+  unSubNumber$ : Subscription;
 
   onSub() {
+
+    this.unSubNumber$ = this.numberObs$
+    .pipe(map(val => val*2))
+    .pipe(tap(value => console.log("TAP", value)))
+    .pipe(take(2))
+    .subscribe(value => console.log(value));
+
+
     this.unsub$ = this.obs$.subscribe(
       (data: string) => {
         this.packages.push(data);
@@ -46,6 +60,7 @@ export class ObservableDemoComponent{
 
   onUnsub(){
     this.unsub$.unsubscribe();
+    this.unSubNumber$.unsubscribe();
   }
 
 
