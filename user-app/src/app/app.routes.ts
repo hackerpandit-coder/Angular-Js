@@ -7,6 +7,9 @@ import { UsersComponent } from './users/users.component';
 import { PipeDemoComponent } from './components/pipe-demo/pipe-demo.component';
 import { ObservableDemoComponent } from './components/observable-demo/observable-demo.component';
 import { LoginGuardService } from './services/login-guard.service';
+import { ProductComponent } from './components/product/product.component';
+import { OverviewComponent } from './components/product/overview/overview.component';
+import { SpecificationComponent } from './components/product/specification/specification.component';
 
 export const APP_ROUTES : Routes =[
     {
@@ -36,6 +39,20 @@ export const APP_ROUTES : Routes =[
         path : "observable-demo", // http://localhost:4200/observable-demo
         component : ObservableDemoComponent
     }, 
+    {
+        path : "product", // http://localhost:4200/product
+        component : ProductComponent,
+        children : [
+            {
+                path : "overview/:id",
+                component : OverviewComponent
+            },
+            {
+                path : "specification",
+                component : SpecificationComponent
+            }
+        ]
+    },
     {
         path : "**",           // http://localhost:4200/non-exist -> login
         redirectTo : "/login",
