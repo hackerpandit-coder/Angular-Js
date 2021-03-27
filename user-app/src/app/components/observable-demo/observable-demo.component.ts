@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription, from } from 'rxjs';
 import { map, tap, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-observable-demo',
@@ -12,6 +13,7 @@ export class ObservableDemoComponent{
   number = [1,2,3,4,5];
   numberObs$ = from(this.number);
 
+  constructor(private router : Router){}
 
   obs$ = new Observable((observer) => {
     setTimeout(() => {
@@ -63,5 +65,8 @@ export class ObservableDemoComponent{
     this.unSubNumber$.unsubscribe();
   }
 
+  moveToLogin(){
+    this.router.navigate(["/login"]);
+  }
 
 }

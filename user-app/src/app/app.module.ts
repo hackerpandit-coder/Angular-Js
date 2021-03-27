@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from "@angular/router";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -18,13 +19,18 @@ import { AuthService } from './services/auth.service';
 import { ObservableDemoComponent } from './components/observable-demo/observable-demo.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LoggerInterceptorService } from './services/logger-interceptor.service';
+import { APP_ROUTES } from './app.routes';
+import { HeaderComponent } from './components/header/header/header.component';
+import { ProductComponent } from './components/product/product.component';
+import { OverviewComponent } from './components/product/overview/overview.component';
+import { SpecificationComponent } from './components/product/specification/specification.component';
 
 @NgModule({
   declarations: [                 // Componant | Directives | Pipes
-    AppComponent, UsersComponent, UserImageComponent, UserInfoComponent, HighlightDirective, PipeDemoComponent, CountryCodePipe, FilterPipe, LoginComponent, RegisterComponent, ObservableDemoComponent
+    AppComponent, UsersComponent, UserImageComponent, UserInfoComponent, HighlightDirective, PipeDemoComponent, CountryCodePipe, FilterPipe, LoginComponent, RegisterComponent, ObservableDemoComponent, HeaderComponent, ProductComponent, OverviewComponent, SpecificationComponent
   ],
   imports: [                      // Module - Build-in or Custom module
-    BrowserModule, FormsModule, ReactiveFormsModule,HttpClientModule
+    BrowserModule, FormsModule, ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(APP_ROUTES)
   ],
   //providers: [DataService,AuthService,AuthInterceptorService],                  // Service - Register the service with providers
   providers: [DataService,
