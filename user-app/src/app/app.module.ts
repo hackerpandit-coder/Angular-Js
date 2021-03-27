@@ -20,10 +20,11 @@ import { ObservableDemoComponent } from './components/observable-demo/observable
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LoggerInterceptorService } from './services/logger-interceptor.service';
 import { APP_ROUTES } from './app.routes';
+import { HeaderComponent } from './components/header/header/header.component';
 
 @NgModule({
   declarations: [                 // Componant | Directives | Pipes
-    AppComponent, UsersComponent, UserImageComponent, UserInfoComponent, HighlightDirective, PipeDemoComponent, CountryCodePipe, FilterPipe, LoginComponent, RegisterComponent, ObservableDemoComponent
+    AppComponent, UsersComponent, UserImageComponent, UserInfoComponent, HighlightDirective, PipeDemoComponent, CountryCodePipe, FilterPipe, LoginComponent, RegisterComponent, ObservableDemoComponent, HeaderComponent
   ],
   imports: [                      // Module - Build-in or Custom module
     BrowserModule, FormsModule, ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(APP_ROUTES)
