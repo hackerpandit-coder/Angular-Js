@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './users/users.component';
 import { PipeDemoComponent } from './components/pipe-demo/pipe-demo.component';
 import { ObservableDemoComponent } from './components/observable-demo/observable-demo.component';
+import { LoginGuardService } from './services/login-guard.service';
 
 export const APP_ROUTES : Routes =[
     {
@@ -24,7 +25,8 @@ export const APP_ROUTES : Routes =[
     },
     {
         path : "users",        // http://localhost:4200/users
-        component : UsersComponent
+        component : UsersComponent,
+        canActivate : [LoginGuardService]
     },
     {
         path : "pipe-demo",    // http://localhost:4200/pipe-demo
