@@ -24,13 +24,15 @@ import { HeaderComponent } from './components/header/header/header.component';
 import { ProductComponent } from './components/product/product.component';
 import { OverviewComponent } from './components/product/overview/overview.component';
 import { SpecificationComponent } from './components/product/specification/specification.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { EmployeeModule } from './modules/employee/employee.module';
 
 @NgModule({
   declarations: [                 // Componant | Directives | Pipes
-    AppComponent, UsersComponent, UserImageComponent, UserInfoComponent, HighlightDirective, PipeDemoComponent, CountryCodePipe, FilterPipe, LoginComponent, RegisterComponent, ObservableDemoComponent, HeaderComponent, ProductComponent, OverviewComponent, SpecificationComponent
+    AppComponent, UsersComponent, UserImageComponent, UserInfoComponent, HighlightDirective, PipeDemoComponent, CountryCodePipe, FilterPipe, LoginComponent, RegisterComponent, ObservableDemoComponent, HeaderComponent, ProductComponent, OverviewComponent, SpecificationComponent, LogoutComponent
   ],
   imports: [                      // Module - Build-in or Custom module
-    BrowserModule, FormsModule, ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(APP_ROUTES)
+    BrowserModule, FormsModule,EmployeeModule, ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(APP_ROUTES)
   ],
   //providers: [DataService,AuthService,AuthInterceptorService],                  // Service - Register the service with providers
   providers: [DataService,
