@@ -10,6 +10,7 @@ import { LoginGuardService } from './services/login-guard.service';
 import { ProductComponent } from './components/product/product.component';
 import { OverviewComponent } from './components/product/overview/overview.component';
 import { SpecificationComponent } from './components/product/specification/specification.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 export const APP_ROUTES : Routes =[
     {
@@ -52,6 +53,14 @@ export const APP_ROUTES : Routes =[
                 component : SpecificationComponent
             }
         ]
+    },
+    {
+        path : "lazy",
+        loadChildren : () => import("./modules/lazy/lazy.module").then(m => m.LazyModule)
+    },
+    {
+        path : "logout",  // http://localhost:4200/logout
+        component : LogoutComponent
     },
     {
         path : "**",           // http://localhost:4200/non-exist -> login

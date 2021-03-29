@@ -42,7 +42,15 @@ export class AuthService {
   }
 
   isAuthenticated() : boolean{
-    console.log("Inside isAuthenticated()..........................", this.token);
     return this.token != null;
+  }
+
+  logout(){
+    firebase.default.auth().signOut().then(res => {
+      console.log("[LOGOUT SUSSESS]");
+      this.token = null;
+      this.router.navigate(["/login"]);
+    })
+    .catch(err => console.log(err))
   }
 }
